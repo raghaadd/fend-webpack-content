@@ -1,5 +1,5 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -7,10 +7,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test: '/\.js$/',
+                test: /\.js$/,  // Corrected test regex
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.json$/,
+                type: 'json'  // Use the built-in JSON support
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.json']  // Optional: To resolve .json files automatically
     }
-}
+};
